@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Test</h1>
+    <input id="input" type="text" />
+
+    <script src="src/index.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("loading starting");
+
+            importer([
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css'
+            ]).then(function(){
+                console.log("Ok iam all done");
+                console.log($("#input").autocomplete)
+            }).catch(error => {
+                console.log("Failed loading css");
+            });
+        });
+    </script>
+</body>
+</html>
