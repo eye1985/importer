@@ -1,7 +1,6 @@
 # Importer
 
-A simple javascript asset loader. 
-Currently it only loads CSS and Javascript files.
+A simple javascript JS/CSS loader.
 
 ## Dependencies 
 
@@ -20,9 +19,9 @@ This library will need two polyfills.
         'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css'
     ]).then(function(){
         console.log("Ok iam all done");
-        console.log($("#input").autocomplete)
+        // Your code here
     }).catch(error => {
-        console.log("Failed loading css");
+        console.log("Failed loading files");
     });
 ```
 
@@ -30,8 +29,7 @@ This library will need two polyfills.
 
 By default:
 
-- Loads the JS files async and defere.
-- JS is loaded sequantially.
+- Loads the JS files async and defere, sequentially.
 - CSS files are loaded async and results in an inline style tag.
 
 
