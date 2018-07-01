@@ -2,12 +2,15 @@
 
 A simple javascript JS/CSS loader.
 
-## Dependencies 
+## Installation
 
-This library will need two polyfills.
+```javascript
+    // Without polyfill
+    <script src="dist/importer.min.js" />
 
-- Promise polyfill
-- Fetch polyfill 
+    // With polyfill
+    <script src="dist/importer.polyfill.min.js" />
+```
 
 
 ## Usage
@@ -20,7 +23,7 @@ This library will need two polyfills.
     ]).then(function(){
         console.log("Ok iam all done");
         // Your code here
-    }).catch(error => {
+    }).catch(function(error) {
         console.log("Failed loading files");
     });
 ```

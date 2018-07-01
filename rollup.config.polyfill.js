@@ -21,14 +21,13 @@ const uglifyPlugin = isProdEnv ? [uglify()] : [];
 export default {
     input: 'src/index.js',
     output: {
-        file: 'dist/importer.min.js',
+        file: 'dist/importer.polyfill.min.js',
         format: 'iife',
-        name : 'importer',
-        globals: {
-            'whatwg-fetch': 'fetch'
-        },
+        name:'importer',
     },
-    external : ['whatwg-fetch','promise-polyfill', 'promise-polyfill/src/polyfill'],
+    moduleContext:{
+        'node_modules/whatwg-fetch/fetch.js':'window'
+    },
     plugins: [
         resolve(),
         commonjs(),

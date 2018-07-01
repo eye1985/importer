@@ -13,11 +13,13 @@
     <div id="status">
     </div>
 
-    <script src="importer.min.js"></script>
+    <script src="importer.polyfill.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function(){
-            console.log("loading starting");
+            if(console.time){
+                console.time("loading");
+            }
 
             importer([
                 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js',
@@ -26,7 +28,11 @@
             ]).then(function(){
                 $( "#datepicker" ).datepicker();
                 document.getElementById("status").innerHTML = "Done loading";
-            }).catch(error => {
+
+                if(console.timeEnd){
+                    console.timeEnd("loading");
+                }
+            }).catch(function(error) {
                 document.getElementById("status").innerHTML = error;
             });
         });

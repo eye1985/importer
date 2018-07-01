@@ -6,7 +6,9 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
     "start": "cross-env NODE_ENV=development rollup -c --watch",
-    "build":"cross-env NODE_ENV=production rollup -c"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "buildp":"cross-env NODE_ENV=production rollup -c rollup.config.polyfill.js"
+
   },
   "author": "erik",
   "license": "ISC",
@@ -28,5 +30,9 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-serve": "^0.4.2",
     "rollup-plugin-uglify": "^4.0.0"
+  },
+  "dependencies": {
+    "promise-polyfill": "^8.0.0",
+    "whatwg-fetch": "^2.0.4"
   }
 }

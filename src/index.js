@@ -1,3 +1,7 @@
+//Polyfills
+import 'promise-polyfill/src/polyfill';
+import 'whatwg-fetch';
+
 import { scriptCreator, styleCreator } from './creator';
 import { isCss, isJs } from './utility';
 
