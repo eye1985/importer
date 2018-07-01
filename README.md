@@ -2,13 +2,20 @@
 
 A simple javascript JS/CSS loader.
 
+## Included polyfill
+
+- promise-polyfill
+- whatwg-fetch
+
 ## Installation
 
 ```javascript
     // Without polyfill
+    // 1kb
     <script src="dist/importer.min.js" />
 
     // With polyfill
+    // 12kb
     <script src="dist/importer.polyfill.min.js" />
 ```
 
