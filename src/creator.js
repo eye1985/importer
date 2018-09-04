@@ -1,8 +1,12 @@
-export const scriptCreator = (url) => {
+export const scriptCreator = (url, useScriptType) => {
     const scriptTag = document.createElement('script');
 
     scriptTag.src = url;
-    scriptTag.type = "text/javascript";
+
+    if(useScriptType){
+        scriptTag.type = "text/javascript";
+    }
+
     scriptTag.setAttribute("async","");
     scriptTag.setAttribute("defer","");
 

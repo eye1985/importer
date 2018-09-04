@@ -6,6 +6,14 @@ import { scriptCreator, styleCreator } from './creator';
 import { isCss, isJs } from './utility';
 
 export default function(sources, settings={}){
+
+    const defaultSettings = {
+        useScriptType : false
+    };
+
+    const configSettings = Object.assign({}, defaultSettings, settings);
+    const {useScriptType} = configSettings;
+
     return new Promise((resolve, reject) => {
 
         const cssSources = sources.filter(url => isCss(url));
@@ -27,7 +35,7 @@ export default function(sources, settings={}){
 
         //JS resources
         const promiseJsSources = jsSources.map(url => () => new Promise((res, rej) => {
-            const scriptTag = scriptCreator(url);
+            const scriptTag = scriptCreator(url,useScriptType);
 
             scriptTag.onload = () => {
                 res();

@@ -16,6 +16,19 @@ describe("Creator", () => {
         expect(scriptCreator(url).src).toBe(url);
     });
 
+    it("should create a script tag with script type 'text/javascript', given option true", () => {
+        const url = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js";
+
+        expect(scriptCreator(url, true).type).toBe("text/javascript");
+    });
+
+    it("should create a script tag with no script type, given option false or omit", () => {
+        const url = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js";
+
+        expect(scriptCreator(url, false)).not.toHaveProperty("text/javascript");
+        expect(scriptCreator(url)).not.toHaveProperty("text/javascript");
+    });
+
     it("should create a style tag when given an url", () => {
         expect(styleCreator(cssUrl).nodeName).toBe("STYLE");
     });

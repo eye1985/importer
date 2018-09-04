@@ -2,28 +2,28 @@
   "env":{
     "test":{
       "presets":[
-        ["env"]
+        ["@babel/preset-env"]
       ]
     },
 
     "production":{
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "modules": false
         }]
       ],
 
-      "plugins": ["external-helpers"]
+      "plugins": ["@babel/plugin-external-helpers"]
     },
 
     "development":{
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "modules": false
         }]
       ],
 
-      "plugins": ["external-helpers"]
+      "plugins": ["@babel/plugin-external-helpers"]
     }
   }
 }
