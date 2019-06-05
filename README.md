@@ -52,7 +52,7 @@ This will set the "text/javascript" in the script tag.
 Example:
 ```javascript
     importer([
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js?version1.0', //Support params
         'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css'
     ],{

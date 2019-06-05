@@ -3,7 +3,7 @@ import 'promise-polyfill/src/polyfill';
 import 'whatwg-fetch';
 
 import { scriptCreator, styleCreator } from './creator';
-import { isCss, isJs } from './utility';
+import { createUrlObj } from './utility';
 
 export default function(sources, settings={}){
 
@@ -16,26 +16,31 @@ export default function(sources, settings={}){
 
     return new Promise((resolve, reject) => {
 
-        const cssSources = sources.filter(url => isCss(url));
-        const jsSources = sources.filter(url => isJs(url));
+        const cssSources = createUrlObj(sources).filter(source => source.type === "css");
+        const jsSources = createUrlObj(sources).filter(source => source.type === "js");
         let jsLength = jsSources.length;
 
         //CSS resources
-        cssSources.forEach(url => fetch(url).then(response => {
-            if(!response.ok){
-                return reject(response.statusText);
-            }
+        cssSources.forEach(urlObj => {
+            const params = urlObj.param.trim().length > 0 ? `?${urlObj.param}`:"";
 
-            return response.text();
-        }).then(cssStr => {
-            document.head.appendChild(styleCreator(cssStr));
-        }).catch(error => {
-            reject(error);
-        }));
+            fetch(urlObj.url + params).then(response => {
+                if(!response.ok){
+                    return reject(response.statusText);
+                }
+
+                return response.text();
+            }).then(cssStr => {
+                document.head.appendChild(styleCreator(cssStr));
+            }).catch(error => {
+                reject(error);
+            });
+        });
 
         //JS resources
-        const promiseJsSources = jsSources.map(url => () => new Promise((res, rej) => {
-            const scriptTag = scriptCreator(url,useScriptType);
+        const promiseJsSources = jsSources.map(urlObj => () => new Promise((res, rej) => {
+            const params = urlObj.param.trim().length > 0 ? `?${urlObj.param}`:"";
+            const scriptTag = scriptCreator(urlObj.url + params,useScriptType);
 
             scriptTag.onload = () => {
                 res();
