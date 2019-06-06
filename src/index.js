@@ -1,9 +1,11 @@
 //Polyfills
 import 'promise-polyfill/src/polyfill';
 import 'whatwg-fetch';
-
+import {polyfill} from 'es6-object-assign';
 import { scriptCreator, styleCreator } from './creator';
 import { createUrlObj } from './utility';
+
+polyfill();
 
 export default function(sources, settings={}){
 

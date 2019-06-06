@@ -19,6 +19,7 @@
     "babel-jest": "^24.8.0",
     "browser-env": "^3.2.6",
     "cross-env": "^5.2.0",
+    "es6-object-assign": "^1.1.0",
     "es6-promise": "^4.2.6",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^24.8.0",
